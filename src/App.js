@@ -1,28 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-class App extends Component {
+class Everything extends React.Component {
   render() {
+    let snowflakes = [];
+    for (var i = 0; i < 40; i++) {
+      const position = Math.random() * 100;
+      const delay = Math.random() * 2.4;
+      const style = {
+        animationDelay: delay + 's',
+        left: position + '%'
+      };
+      snowflakes.push(
+        <div style={style} key={i} className="snowflakeContainer">
+          <img
+            className="snowflake"
+            alt="snowflake"
+            src="https://techflourish.com/images/best-snowflake-clipart-black-and-white-4.png"
+          />
+        </div>
+      );
+    }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
+      <div className="everything">
+        {snowflakes}
+        <div className="ground">
+          <p className="credit">
+            {' '}
+            ❆ Made by{' '}
+            <a href="https://wwww.twitter.com/elliempatten">Ellie Patten</a>
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default Everything;
